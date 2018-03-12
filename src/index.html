@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Meeting Streaming</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		<script>
+				var config={
+					name: "",
+					congs: []
+				}
+			</script>
+			<script src="config.js"></script>
+		</head>
+	<body>
+		<div class="page-header text-center">
+			<h1>
+                <a href="index.html">
+					<script>
+						document.write(config.name);
+					</script>
+				</a>
+            </h1>
+			<br />
+			<br />
+			<div class="gc-action-button-wrapper">
+				<div class="container-fluid">
+					<script>
+						for( var i=0 ; i<config.congs.length ; i++ ) {
+							cong=config.congs[i];
+							document.write('<div class="row">');
+							document.write('<div class="col-md-offset-5 col-md-2">');
+							document.write('<a class="btn btn-default btn-info" href="'+cong.url+'" title="Live Stream">'+cong.name+'</a>');
+							document.write('</div>');
+							document.write('</div>');
+						}
+					</script>
+				</div>
+			</div>		
+			<br />
+			<br />
+		</div> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="alert alert-info">
+                        <strong>Please Note:</strong> Live streaming is only available during meeting times.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gc-page-footer">
+            <small>Copyright &copy; 2018. All rights Reserved.</small>
+        </div>
+	</body>
+</html>

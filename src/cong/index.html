@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Rockford Sign Language Congregation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../style.css" />
+		<script>
+			var config={
+				name: "",
+				formUrl: "",
+				formId: "1",
+				channel: ""
+			}
+			function CognitoSuccess(){
+				ExoJQuery(function() {
+					ExoJQuery(document)
+						.on('afterSubmit.cognito', function(e, data) {
+							document.getElementById("videoWrapper").style.display="block";
+						});
+				});
+			}
+		</script>
+		<script src="config.js"></script>
+	</head>
+	<body>
+		<div class="page-header text-center">
+			<h1>
+				<a href="index.html">
+					<script>document.write(config.name);</script>
+				</a>
+            </h1>
+			<br>
+			<br>
+		</div> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+                    <div class="alert alert-info">
+                        <strong>Please Note:</strong> Live streaming is only available during meeting times.
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+					<div class="cognito">
+						<script>
+							if( config.formUrl!=="" ) {
+								document.write('<scr'+'ipt src=\''+config.formUrl+'\'><\/script>');
+								document.write('<script>Cognito.load("forms", { id: \''+config.formId+'\' }, {success:CognitoSuccess});<\/script>');
+							}
+						</script>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="videoWrapper" class="videoWrapper">
+					<script>
+						if( config.channel!=="" ) {
+							document.write('<iframe width="960" height="540" src="https://www.youtube.com/embed/live_stream?channel='+config.channel+';modestbranding=1&amp;wmode=transparent&amp;rel=0" frameborder="0" allowfullscreen modestbranding></iframe>');
+						}
+					</script>
+				</div>
+			</div>	
+		</div>
+        <div class="gc-page-footer">
+            <small>Copyright &copy; 2018 All rights Reserved.</small>
+        </div>
+	</body>
+</html>

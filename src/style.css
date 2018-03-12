@@ -1,0 +1,131 @@
+body {
+	background-color: #eee;
+}
+
+.gc-page-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: #555;
+	margin-top: 20px;
+}
+
+.alert {
+    margin: -20px 20px 20px 20px;
+}
+.alert .glyphicon {
+    font-size: 30px;
+    padding-right: 10px;
+    vertical-align: bottom;
+}
+.cg-alert-message {
+    font-size: 20px;
+}
+
+.gc-action-button-wrapper .row {
+	margin-bottom: 10px;
+}
+
+.gc-action-button-wrapper .btn {
+	min-width: 180px;
+}
+
+.gc-action-button-wrapper .cg-btn-subnav {
+	margin-left: 6px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.cg-header-note {
+	font-weight: 400;
+	font-style: italic;
+}
+
+.cg-talk-text {
+    color: #999;
+}
+
+.cg-talk-table {
+    max-width: 945px;
+    margin: 20px;
+}
+
+.cg-talk-table .cg-col-date {
+    width: 20%;
+}
+
+.cg-talk-table .cg-col-theme-number {
+    width: 5%;
+}
+
+.cg-talk-table .cg-col-theme-text {
+    width: 55%;
+}
+
+.cg-talk-table .cg-col-date {
+    width: 20%;
+}
+
+.cg-active-link .cg-talk-link,
+.cg-inactive-link .cg-talk-text {
+    display: inline;
+}
+
+.cg-active-link .cg-talk-text,
+.cg-inactive-link .cg-talk-link {
+    display: none;
+}
+
+.gc-video-player-wrapper {
+	padding-bottom: 25px;
+}
+
+.gc-video-player-wrapper > #gcVideoPlayer {
+	padding: 258px 0;
+}
+
+#gcVideoPlayer {
+	width: 960px;
+	height: 540px;
+	text-align: center;
+	font-size: 24px;
+	background-color: #000;
+	color: #eee;
+}
+
+#gcVideoPlayer,
+#gcVideoPlayer_wrapper {
+	position: relative;
+	left: 50%;
+	margin-left: -480px;
+}
+
+.videoWrapper {
+	position: relative;
+	display: none;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+	margin: 15px auto 0 auto;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.block {
+	z-index: 10;
+	height: 100px;
+	width: 100%;
+	opacity: 100%;
+}
+.cognito .c-button-section {
+	padding: 0 0 10px 0 !important;
+}
+.c-forms-confirmation {
+	min-height: 80px !important;
+}
