@@ -1,3 +1,7 @@
+#app {
+	display:none;
+}
+
 body {
 	background-color: #eee;
 }
@@ -13,7 +17,7 @@ body {
 }
 
 .alert {
-    margin: -20px 20px 20px 20px;
+    margin: 0px 20px 20px 20px;
 }
 .alert .glyphicon {
     font-size: 30px;
@@ -25,7 +29,8 @@ body {
 }
 
 .gc-action-button-wrapper .row {
-	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
 
 .gc-action-button-wrapper .btn {
@@ -104,7 +109,6 @@ body {
 
 .videoWrapper {
 	position: relative;
-	display: none;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
 	height: 0;

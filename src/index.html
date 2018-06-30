@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Meeting Streaming</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="style.css" />
-		<script>
-			var config={
-				name: "",
-				congs: []
-			}
-		</script>
-		<script src="config.js"></script>
-	</head>
-	<body>
-		<div class="page-header text-center">
-			<h1>
-                <a href="index.html">
-					<script>
-						document.write(config.name);
-					</script>
-				</a>
+    <head>
+        <title>Meeting Streaming</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="app" class="page-header text-center">
+            <h1>
+                <a href="index.html">{{ name }}</a>
             </h1>
-			<br />
-			<br />
-			<div class="gc-action-button-wrapper">
-				<div class="container-fluid">
-					<script>
-						for( var i=0 ; i<config.congs.length ; i++ ) {
-							cong=config.congs[i];
-							document.write('<div class="row">');
-							document.write('<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">');
-							document.write('<a class="btn btn-default btn-info btn-block" href="'+cong.url+'" title="Live Stream">'+cong.name+'</a>');
-							document.write('</div>');
-							document.write('</div>');
-						}
-					</script>
-				</div>
-			</div>		
-			<br />
-			<br />
-		</div> 
-        <div class="container-fluid">
+            <h2 v-show="congregation.name">
+                {{ congregation.name }}
+            </h2>
+            <br />
+            <br />
+            <div v-show="message" class="container-fluid">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="alert alert-danger">
+                            <strong>Note:</strong> {{ message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="congregation.name.length==0" class="gc-action-button-wrapper">
+                <div class="container-fluid">
+                    <div v-for="cong in congregations" class="row">
+                        <div class="col-md-offset-5 col-md-2">
+                            <a class="btn btn-default btn-info" href="#" @click="loadCong(cong.url)" title="Live Stream">{{ cong.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="congregation.name.length" class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+                        <div class="cognito"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="videoWrapper" v-show="showVideo" class="videoWrapper">
+                        <iframe v-show="youtubeUrl" :src="youtubeUrl" width="960" height="540" frameborder="0" allowfullscreen modestbranding></iframe>
+                    </div>
+                </div>	
+            </div>
+        </div>
+        <div id="alert-container" class="container-fluid">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
                     <div class="alert alert-info">
@@ -50,8 +56,11 @@
                 </div>
             </div>
         </div>
-        <div class="gc-page-footer">
+        <div id="copyright-container" class="gc-page-footer">
             <small>Copyright &copy; 2018. All rights Reserved.</small>
         </div>
-	</body>
+        <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+        <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+        <script language="javascript" src="app.js"></script>
+    </body>
 </html>

@@ -1,0 +1,9 @@
+{
+    "name": "Sample Kingdom Hall",
+    "congregations": [
+        {
+            "name": "Sample Congregation",
+            "url": "cong/config.json"
+        }
+    ]
+}
