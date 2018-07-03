@@ -50,7 +50,8 @@ var app = new Vue({
         loadCong: function(url) {
             this.message='';
             // Get the congregation config and act onit
-            this.$http.get(url).then(response => {
+            var d=new Date();
+            this.$http.get(url+'?tick='+d.getTime()).then(response => {
                 this.congregation = response.body;
                 // Create a script tag to load the Cognito form.
                 var scr = document.createElement('script');
@@ -69,7 +70,8 @@ var app = new Vue({
         document.getElementById("alert-container").style.display="block";
         document.getElementById("copyright-container").style.display="block";
         // Load global configs
-        this.$http.get('config.json').then(response => {
+        var d=new Date();
+        this.$http.get('config.json?tick='+d.getTime()).then(response => {
             this.name = response.body.name;
             this.congregations = response.body.congregations;
         }, error => {
