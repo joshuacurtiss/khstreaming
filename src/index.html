@@ -42,9 +42,23 @@
                 </div>
                 <div class="row">
                     <div id="videoWrapper" v-show="showVideo" class="videoWrapper">
-                        <iframe v-show="youtubeUrl" :src="youtubeUrl" width="960" height="540" frameborder="0" allowfullscreen modestbranding></iframe>
+                        <iframe v-show="youtubeUrl" :src="youtubeUrl" frameborder="0" allowfullscreen modestbranding></iframe>
                     </div>
                 </div>	
+                <div v-show="showVideo && videos.length" class="row">
+                    <br /><br />
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="alert alert-info">
+                            Below are recently recorded meeting videos.
+                        </div>
+                    </div>
+                </div>
+                <div v-show="showVideo" v-for="videoId in videos" class="row">
+                    <br />
+                    <div class="videoWrapper">
+                        <iframe :src="recordingUrl(videoId)" frameborder="0" allowFullScreen modestbranding></iframe>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="alert-container" class="container-fluid">

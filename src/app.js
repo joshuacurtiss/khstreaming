@@ -35,8 +35,10 @@ var app = new Vue({
             "name": '',
             "formId": '1',
             "formUrl": '',
-            "channel": ''        
+            "channel": '',
+            "apikey": ''
         },
+        "videos": [],
         "congregations": []
     },
     computed: {
@@ -44,6 +46,13 @@ var app = new Vue({
             // Returns a full YouTube embed URL, with the congregation channel 
             if( this.congregation.channel ) return "https://www.youtube.com/embed/live_stream?channel=" + this.congregation.channel + ";modestbranding=1&amp;wmode=transparent&amp;rel=0";
             else return "";
+        },
+        videosUrl: function() {
+            return 'https://www.googleapis.com/youtube/v3/search?order=date&part=id&channelId=' +
+                this.congregation.channel +
+                '&maxResults=2' +
+                '&key=' +
+                this.congregation.apikey;
         }
     },
     methods: {
@@ -59,9 +68,25 @@ var app = new Vue({
                 document.head.appendChild(scr);
                 // Then execute the function to actually load up the Cognito form on the screen.
                 loadCognito();
+                // Load previous YouTube videos if we have an API key
+                this.loadVideos();
             }, error => {
                 this.message=error.statusText;
             });
+        },
+        loadVideos: function() {
+            if( this.congregation.apikey.length ) {
+                this.$http.get(this.videosUrl).then(response => {
+                    if( response.body.items ) this.videos=response.body.items.map(item=>item.id.videoId);
+                    else this.message="Could not find YouTube recordings.";
+                }, error => {
+                    this.message=error.statusText;
+                });
+            }
+        },
+        recordingUrl: function(videoId) {
+            if( videoId ) return 'https://www.youtube.com/embed/'+videoId+'?rel=0';
+            else return '';
         }
     },
     mounted() {

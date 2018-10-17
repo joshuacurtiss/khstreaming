@@ -2,5 +2,6 @@
     "name": "Sample Congregation",
     "formId": "1",
     "formUrl": "https://services.cognitoforms.com/s/form-id-goes-here",
-    "channel": "channel-id-goes-here"
+    "channel": "channel-id-goes-here",
+    "apikey": ""
 } 
