@@ -61,15 +61,19 @@ var app = new Vue({
             // Get the congregation config and act onit
             var d=new Date();
             this.$http.get(url+'?tick='+d.getTime()).then(response => {
-                this.congregation = response.body;
-                // Create a script tag to load the Cognito form.
-                var scr = document.createElement('script');
-                scr.setAttribute('src', this.congregation.formUrl);
-                document.head.appendChild(scr);
-                // Then execute the function to actually load up the Cognito form on the screen.
-                loadCognito();
-                // Load previous YouTube videos if we have an API key
-                this.loadVideos();
+                if( response.body ) {
+                    this.congregation = response.body;
+                    // Create a script tag to load the Cognito form.
+                    var scr = document.createElement('script');
+                    scr.setAttribute('src', this.congregation.formUrl);
+                    document.head.appendChild(scr);
+                    // Then execute the function to actually load up the Cognito form on the screen.
+                    loadCognito();
+                    // Load previous YouTube videos if we have an API key
+                    this.loadVideos();
+                } else {
+                    this.message="Could not load congregation configuration!";
+                }
             }, error => {
                 this.message=error.statusText;
             });
