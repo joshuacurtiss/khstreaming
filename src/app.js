@@ -36,9 +36,9 @@ var app = new Vue({
             "formId": '1',
             "formUrl": '',
             "channel": '',
-            "apikey": ''
+            "apikey": '',
+            "videos": []
         },
-        "videos": [],
         "congregations": []
     },
     computed: {
@@ -63,6 +63,9 @@ var app = new Vue({
             this.$http.get(url+'?tick='+d.getTime()).then(response => {
                 if( response.body ) {
                     this.congregation = response.body;
+                    // Check for certain configs presence
+                    if( ! this.congregation.hasOwnProperty("apikey") ) this.congregation.apikey='';
+                    if( ! this.congregation.hasOwnProperty("videos") ) this.congregation.videos=[];
                     // Create a script tag to load the Cognito form.
                     var scr = document.createElement('script');
                     scr.setAttribute('src', this.congregation.formUrl);
@@ -81,7 +84,7 @@ var app = new Vue({
         loadVideos: function() {
             if( this.congregation.apikey.length ) {
                 this.$http.get(this.videosUrl).then(response => {
-                    if( response.body.items ) this.videos=response.body.items.map(item=>item.id.videoId);
+                    if( response.body.items ) this.congregation.videos=response.body.items.map(item=>item.id.videoId);
                     else this.message="Could not find YouTube recordings.";
                 }, error => {
                     this.message=error.statusText;

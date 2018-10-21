@@ -45,7 +45,7 @@
                         <iframe v-show="youtubeUrl" :src="youtubeUrl" frameborder="0" allowfullscreen modestbranding></iframe>
                     </div>
                 </div>	
-                <div v-show="showVideo && videos.length" class="row">
+                <div v-show="showVideo && congregation.videos.length" class="row">
                     <br /><br />
                     <div class="col-md-offset-2 col-md-8">
                         <div class="alert alert-info">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-show="showVideo" v-for="videoId in videos" class="row">
+                <div v-show="showVideo" v-for="videoId in congregation.videos" class="row">
                     <br />
                     <div class="videoWrapper">
                         <iframe :src="recordingUrl(videoId)" frameborder="0" allowFullScreen modestbranding></iframe>
