@@ -17,7 +17,7 @@ body {
 }
 
 .alert {
-    margin: 0px 20px 20px 20px;
+    margin: 0px 0px 20px 0px;
 }
 .alert .glyphicon {
     font-size: 30px;
@@ -34,7 +34,8 @@ body {
 }
 
 .gc-action-button-wrapper .btn {
-	min-width: 180px;
+	width: 100%;
+	min-width: 150px;
 }
 
 .gc-action-button-wrapper .cg-btn-subnav {
@@ -126,6 +127,9 @@ body {
 	height: 100px;
 	width: 100%;
 	opacity: 100%;
+}
+.cognito {
+	max-width: 9999px !important;
 }
 .cognito .c-button-section {
 	padding: 0 0 10px 0 !important;
